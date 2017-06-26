@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { HttpModule } from '@angular/http';
+
 import { MyApp } from './app.component';
 
 import { TutorialPage } from '../pages/tutorial/tutorial';
@@ -20,6 +22,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ItemService } from '../providers/item.service';
+import { UserService } from '../providers/user.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { ItemService } from '../providers/item.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -59,6 +63,7 @@ import { ItemService } from '../providers/item.service';
   ],
   providers: [
     ItemService,
+    UserService,
     StatusBar,
     SplashScreen,
     Geolocation,
