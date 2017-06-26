@@ -21,7 +21,15 @@ export class ListMasterPage {
   }
 
   addItem() {
+    //创建模态框
     let addModal = this.modalCtrl.create(ItemCreatePage);
+
+    //模态框关闭后调用
+    addModal.onDidDismiss(item => {
+      this.itemService.add(item);
+    })
+
+    //显示模态框
     addModal.present();
   }
 
