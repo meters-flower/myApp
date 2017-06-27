@@ -22,6 +22,7 @@
 
 <ion-content>
   <form [formGroup]="form">
+    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />  
     <div class="img-wrapper" (click)="getPicture()">
       <div class="img-btn" *ngIf="!this.form.controls.profilePic.value">
         <ion-icon name="add" margin padding-top></ion-icon>

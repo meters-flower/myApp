@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
@@ -8,7 +8,7 @@ import { Camera } from '@ionic-native/camera';
   templateUrl: 'item-create.html'
 })
 export class ItemCreatePage {
-
+  @ViewChild('fileInput') fileInput;
   isReadyToSave: boolean;
   item: any;
   form: FormGroup;
@@ -45,8 +45,20 @@ export class ItemCreatePage {
         alert('Unable to take photo');
       })
     } else {
-      alert('没有相机');
+      this.fileInput.nativeElement.click();
     }
+  }
+
+  /* 预览本地图片 */
+  processWebImage(event) {
+    let reader = new FileReader();
+    reader.onload = (readerEvent) => {
+
+      let imageData = (readerEvent.target as any).result;
+      this.form.patchValue({ 'profilePic': imageData });
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
   }
 
   /* 取消，直接关闭当前的viewController */
