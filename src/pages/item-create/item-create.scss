@@ -1,0 +1,23 @@
+page-item-create {
+	.img-wrapper {
+		text-align: center;
+		margin: 20px 0;
+
+		.img, .img-btn {
+			display: inline-block;
+
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      font-size: 12px;
+      background-color: #eee;
+      cursor: pointer;
+		}
+
+		.img {
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+}

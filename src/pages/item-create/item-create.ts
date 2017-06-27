@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Camera } from '@ionic-native/camera';
 
 @Component({
   selector: 'page-item-create',
@@ -15,7 +16,8 @@ export class ItemCreatePage {
   constructor(
   	public navCtrl: NavController, 
   	public viewCtrl: ViewController,
-  	public formBuilder: FormBuilder
+  	public formBuilder: FormBuilder,
+    public camera: Camera
   ) {
   	/* angular表单的一种用法，方便验证 */
     this.form = formBuilder.group({
@@ -28,6 +30,23 @@ export class ItemCreatePage {
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
+  }
+
+  /* 拍照*/
+  getPicture() {
+    if (Camera['installed']()) {
+      this.camera.getPicture({
+        destinationType: this.camera.DestinationType.DATA_URL,
+        targetWidth: 96,
+        targetHeight: 96
+      }).then((data) => {
+        this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
+      }, (err) => {
+        alert('Unable to take photo');
+      })
+    } else {
+      alert('没有相机');
+    }
   }
 
   /* 取消，直接关闭当前的viewController */

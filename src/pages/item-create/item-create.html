@@ -22,6 +22,14 @@
 
 <ion-content>
   <form [formGroup]="form">
+    <div class="img-wrapper" (click)="getPicture()">
+      <div class="img-btn" *ngIf="!this.form.controls.profilePic.value">
+        <ion-icon name="add" margin padding-top></ion-icon>
+        <div>add img</div>
+      </div>
+      <img [src]="this.form.controls.profilePic.value" alt="" class="img" *ngIf="this.form.controls.profilePic.value">
+      <div ></div>
+    </div>
     <ion-list>
       <ion-item>
         <ion-input type="text" placeholder="name" formControlName="name"></ion-input>

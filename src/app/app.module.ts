@@ -21,6 +21,8 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Camera } from '@ionic-native/camera';
+
 import { ItemService } from '../providers/item.service';
 import { UserService } from '../providers/user.service';
 
@@ -67,6 +69,7 @@ import { UserService } from '../providers/user.service';
     StatusBar,
     SplashScreen,
     Geolocation,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
