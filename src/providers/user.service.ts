@@ -5,18 +5,18 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserService {
   _user: any;
-	private url = 'https://example.com/api/user'; 
+	private url = '/api/user'; 
 
   constructor(public http: Http) {
   }
 
   login(user: any) {
-		return this.http.post(this.url + 'login', user)
+		return this.http.post(this.url + '/login', user)
       .map(res => res.json());
   }
 
   signup(user: any) {
-		return this.http.post(this.url + 'signup', user)
+		return this.http.post(this.url + '/signup', user)
       .map(res => res.json());
   }
 

@@ -39,9 +39,9 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      //状态栏设置，设置默认样式（深色文本,浅色背景）
+      this.statusBar.styleDefault(); 
+      //闪屏设置
       this.splashScreen.hide();
     });
   }
