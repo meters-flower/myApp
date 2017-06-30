@@ -5,4 +5,16 @@
 </ion-header>
 
 
-<ion-content></ion-content>
+<ion-content>
+	<ion-list>
+		<button ion-item>
+	    <ion-icon name="contact" item-start></ion-icon>
+	    个人信息
+	    <ion-icon name="arrow-forward" item-end></ion-icon>
+	  </button>	
+		<button ion-item (click)="logout()">
+	    <ion-icon name="log-out" item-start></ion-icon>
+	    退出
+	  </button>
+	</ion-list>
+</ion-content>

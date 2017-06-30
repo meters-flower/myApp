@@ -24,21 +24,25 @@ export class LoginPage {
   /* 登录响应事件 */
   doLogin() {
     this.user.login(this.account).subscribe(res => {
+      //登录失败,反馈信息
+      if(res.message)  return this.showToast(res.message);
+
       //登录成功，保存用户信息，并跳转到列表页
-      this.user.loggedIn(res)
+      this.user.loggedIn(res);
       this.navCtrl.setRoot(TabsPage);
     }, err => {
-      //登录失败,反馈信息，并清空密码
-      let toast = this.toastCtrl.create({
-        message: '账号或密码错误',
-        duration: 3000,
-        position: 'bottom'
-      });
-      toast.present();
+      //其他错误
+      this.showToast(err.statusText)
       this.account.password = '';
-
-      // ---TODO：因为没有编写服务器端的，所以登录绝对失败，这里就直接进入列表页咯
-      this.navCtrl.setRoot(TabsPage);
     });
+  }
+
+  showToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
   }
 }

@@ -20,12 +20,15 @@ export class UserService {
       .map(res => res.json());
   }
 
+  logout() {
+    return this.http.get(this.url + '/logout/'+ this._user.username)
+      .map(res => res.json());
+  }  
+
   loggedIn(user: any) {
     this._user = user;
   }  
 
-  logout() {
-  	this._user =  null;
-  }
+
 }
 
